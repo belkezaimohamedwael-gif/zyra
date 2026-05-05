@@ -8,16 +8,17 @@ export default function Newsletter() {
   const ref = useReveal();
 
   return (
-    <section style={{ background: '#3a2a24', padding: '90px 80px', textAlign: 'center' }}>
+    <section className="rpad-md" style={{ background: '#3a2a24', textAlign: 'center' }}>
       <div ref={ref} className="reveal">
         <div style={{ fontFamily: "'Jost'", fontSize: 11, letterSpacing: '0.4em', color: '#c9a090', textTransform: 'uppercase', marginBottom: 16 }}>Restez Informée</div>
-        <h2 style={{ fontFamily: "'Cormorant Garamond'", fontSize: 'clamp(32px,4vw,52px)', fontWeight: 300, color: '#faf6f1', marginBottom: 12 }}>Les nouveautés en premier</h2>
+        <h2 style={{ fontFamily: "'Cormorant Garamond'", fontSize: 'clamp(28px,4vw,52px)', fontWeight: 300, color: '#faf6f1', marginBottom: 12 }}>Les nouveautés en premier</h2>
         <p style={{ fontFamily: "'Jost'", fontWeight: 300, fontSize: 14, color: 'rgba(250,246,241,0.45)', marginBottom: 40 }}>Accès exclusif aux nouvelles collections et offres spéciales</p>
         {done ? (
           <div style={{ fontFamily: "'Cormorant Garamond'", fontSize: 22, fontStyle: 'italic', color: '#c9a090' }}>Merci ! Vous êtes maintenant inscrite ✦</div>
         ) : (
-          <div style={{ display: 'flex', justifyContent: 'center', maxWidth: 440, margin: '0 auto' }}>
+          <div className="newsletter-form">
             <input
+              className="newsletter-input"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Votre adresse email"
@@ -25,7 +26,7 @@ export default function Newsletter() {
             />
             <button
               onClick={() => email && setDone(true)}
-              style={{ padding: '14px 28px', background: '#b8836f', border: 'none', color: '#faf6f1', fontFamily: "'Jost'", fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', cursor: 'pointer' }}
+              style={{ padding: '14px 28px', background: '#b8836f', border: 'none', color: '#faf6f1', fontFamily: "'Jost'", fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', cursor: 'pointer', whiteSpace: 'nowrap' }}
             >
               S&apos;inscrire
             </button>

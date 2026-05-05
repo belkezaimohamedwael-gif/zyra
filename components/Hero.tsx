@@ -31,12 +31,25 @@ export default function Hero() {
       ))}
 
       {/* Gradient */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(105deg, rgba(250,246,241,0.92) 0%, rgba(250,246,241,0.82) 30%, rgba(250,246,241,0.35) 55%, rgba(250,246,241,0.0) 75%)' }} />
+      <div
+        className="hero-gradient-overlay"
+        style={{
+          position: 'absolute', inset: 0, zIndex: 2,
+          background: 'linear-gradient(105deg, rgba(250,246,241,0.92) 0%, rgba(250,246,241,0.82) 30%, rgba(250,246,241,0.35) 55%, rgba(250,246,241,0.0) 75%)',
+        }}
+      />
 
       {/* Content */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 3, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '100px 80px 80px' }}>
+      <div
+        className="hero-content-inner"
+        style={{
+          position: 'absolute', inset: 0, zIndex: 3,
+          display: 'flex', flexDirection: 'column', justifyContent: 'center',
+          padding: '100px 80px 80px',
+        }}
+      >
         <div style={{ fontFamily: "'Jost'", fontSize: 11, letterSpacing: '0.45em', color: '#9a5a48', textTransform: 'uppercase', marginBottom: 28, display: 'flex', alignItems: 'center', gap: 14 }}>
-          <span style={{ display: 'inline-block', width: 32, height: 1, background: '#b8836f' }} />
+          <span style={{ display: 'inline-block', width: 32, height: 1, background: '#b8836f', flexShrink: 0 }} />
           Nouvelle Collection 2026 · Alger
         </div>
 
@@ -52,15 +65,23 @@ export default function Hero() {
           ))}
         </h1>
 
-        <p style={{ fontFamily: "'Jost'", fontWeight: 300, fontSize: 16, color: '#5a3a30', marginTop: 28 }}>{cur.sub}</p>
+        <p className="hero-sub" style={{ fontFamily: "'Jost'", fontWeight: 300, fontSize: 16, color: '#5a3a30', marginTop: 28 }}>{cur.sub}</p>
 
-        <div style={{ display: 'flex', gap: 16, marginTop: 48 }}>
+        <div className="hero-btn-group" style={{ display: 'flex', gap: 16, marginTop: 48 }}>
           <Btn primary onClick={() => router.push('/shop')}>Découvrir la Collection</Btn>
           <Btn onClick={() => router.push('/shop')} style={{ background: 'rgba(250,246,241,0.7)', backdropFilter: 'blur(8px)', borderBottom: 'none', padding: '14px 28px' }}>Nouveautés →</Btn>
         </div>
 
         {/* Delivery badge */}
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12, marginTop: 40, background: 'rgba(250,246,241,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184,131,111,0.2)', padding: '12px 20px', alignSelf: 'flex-start' }}>
+        <div
+          className="hero-badge"
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: 12, marginTop: 40,
+            background: 'rgba(250,246,241,0.85)', backdropFilter: 'blur(8px)',
+            border: '1px solid rgba(184,131,111,0.2)', padding: '12px 20px',
+            alignSelf: 'flex-start',
+          }}
+        >
           <span style={{ fontSize: 18 }}>🚚</span>
           <div>
             <div style={{ fontFamily: "'Jost'", fontSize: 11, letterSpacing: '0.2em', color: '#b8836f', textTransform: 'uppercase' }}>Livraison Gratuite</div>
@@ -69,10 +90,15 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Floating product card */}
+      {/* Floating product card — hidden on mobile */}
       <div
-        className="animate-float"
-        style={{ position: 'absolute', right: 60, top: '50%', transform: 'translateY(-40%)', zIndex: 4, background: 'rgba(250,246,241,0.95)', backdropFilter: 'blur(12px)', border: '1px solid rgba(184,131,111,0.2)', padding: '20px 24px', boxShadow: '0 24px 48px rgba(100,60,40,0.12)', minWidth: 170 }}
+        className="animate-float hero-floating-card"
+        style={{
+          position: 'absolute', right: 60, top: '50%', transform: 'translateY(-40%)', zIndex: 4,
+          background: 'rgba(250,246,241,0.95)', backdropFilter: 'blur(12px)',
+          border: '1px solid rgba(184,131,111,0.2)', padding: '20px 24px',
+          boxShadow: '0 24px 48px rgba(100,60,40,0.12)', minWidth: 170,
+        }}
       >
         <div style={{ width: 140, height: 140, overflow: 'hidden', marginBottom: 16, position: 'relative' }}>
           <Image src={PHOTOS.p1} alt="Petal Flat" fill style={{ objectFit: 'cover' }} unoptimized />
@@ -86,7 +112,10 @@ export default function Hero() {
       </div>
 
       {/* Slide dots */}
-      <div style={{ position: 'absolute', bottom: 80, left: 80, zIndex: 4, display: 'flex', gap: 8 }}>
+      <div
+        className="hero-dots-bar"
+        style={{ position: 'absolute', bottom: 80, left: 80, zIndex: 4, display: 'flex', gap: 8 }}
+      >
         {HERO_SLIDES.map((_, i) => (
           <button key={i} onClick={() => setSlide(i)} style={{ width: i === slide ? 28 : 8, height: 4, borderRadius: 2, border: 'none', background: i === slide ? '#b8836f' : 'rgba(184,131,111,0.25)', cursor: 'pointer', transition: 'all 0.4s' }} />
         ))}

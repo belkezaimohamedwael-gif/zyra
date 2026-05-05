@@ -14,13 +14,13 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section style={{ background: '#faf6f1', padding: '100px 80px' }}>
+    <section className="section-testimonials" style={{ background: '#faf6f1', padding: '100px 80px' }}>
       <SectionHeader eyebrow="Elles Témoignent" title="Ce Qu'Elles Disent" center />
       <div ref={ref} className="reveal" style={{ maxWidth: 700, margin: '56px auto 0', textAlign: 'center' }}>
         {TESTIMONIALS.map((r, i) => (
           <div key={i} style={{ display: i === active ? 'block' : 'none', animation: 'fadeIn 0.7s ease' }}>
             <div style={{ fontFamily: "'Cormorant Garamond'", fontSize: 80, lineHeight: 0.6, color: 'rgba(184,131,111,0.15)', marginBottom: 20, userSelect: 'none' }}>❝</div>
-            <p style={{ fontFamily: "'Cormorant Garamond'", fontSize: 'clamp(20px,2.2vw,28px)', fontStyle: 'italic', fontWeight: 300, color: '#3a2a24', lineHeight: 1.65, marginBottom: 32 }}>
+            <p style={{ fontFamily: "'Cormorant Garamond'", fontSize: 'clamp(18px,2.2vw,28px)', fontStyle: 'italic', fontWeight: 300, color: '#3a2a24', lineHeight: 1.65, marginBottom: 32 }}>
               "{r.text}"
             </p>
             <div style={{ fontFamily: "'Jost'", fontSize: 13, color: '#b8836f', letterSpacing: '0.12em' }}>{r.name}</div>

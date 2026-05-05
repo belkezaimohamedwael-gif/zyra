@@ -4,7 +4,13 @@
       "Bash(npm install *)",
       "Bash(npx next *)",
       "Bash(Get-ChildItem -Recurse -File E:\\\\zyra\\\\app\\\\admin)",
-      "Bash(Select-Object -ExpandProperty FullName)"
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Bash(Get-ChildItem -Path \"E:\\\\zyra\" -Recurse -Force)",
+      "Bash(Select-Object FullName)",
+      "Bash(ConvertTo-Csv -NoTypeInformation)",
+      "Bash(Write-Output)",
+      "PowerShell(Get-ChildItem -Path \"E:\\\\zyra\" -Recurse -Force | Where-Object { -not $_.PSIsContainer } | Select-Object FullName | Sort-Object FullName)",
+      "Bash(npx tsc *)"
     ]
   }
 }

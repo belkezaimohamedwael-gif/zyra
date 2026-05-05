@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import Btn from '@/components/Btn';
 import { fmt } from '@/lib/data';
 import { useCartStore } from '@/lib/store';
@@ -18,9 +19,9 @@ export default function CartPage() {
     <main>
       <Navbar />
       <div style={{ paddingTop: 72, background: '#faf6f1', minHeight: '100vh' }}>
-        <div style={{ padding: '48px 80px' }}>
+        <div className="cart-outer" style={{ padding: '48px 80px' }}>
           <div style={{ fontFamily: "'Jost'", fontSize: 11, letterSpacing: '0.35em', color: '#c9a090', marginBottom: 12, textTransform: 'uppercase' }}>Mon Panier</div>
-          <h1 style={{ fontFamily: "'Cormorant Garamond'", fontSize: 'clamp(36px,4vw,56px)', fontWeight: 300, color: '#3a2a24', marginBottom: 48 }}>
+          <h1 style={{ fontFamily: "'Cormorant Garamond'", fontSize: 'clamp(32px,4vw,56px)', fontWeight: 300, color: '#3a2a24', marginBottom: 40 }}>
             {items.length === 0 ? 'Votre panier est vide' : `${items.length} article${items.length > 1 ? 's' : ''}`}
           </h1>
 
@@ -31,12 +32,22 @@ export default function CartPage() {
               <Btn primary onClick={() => router.push('/shop')}>Découvrir la Collection</Btn>
             </div>
           ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 60, alignItems: 'start' }}>
+            <div
+              className="cart-main-grid"
+              style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 60, alignItems: 'start' }}
+            >
               {/* Items */}
               <div>
                 {items.map((item, idx) => (
-                  <div key={item.cartId} style={{ display: 'grid', gridTemplateColumns: '120px 1fr auto', gap: 24, paddingBottom: 28, marginBottom: 28, borderBottom: idx < items.length - 1 ? '1px solid rgba(184,131,111,0.12)' : 'none', alignItems: 'start' }}>
-                    <div style={{ aspectRatio: '3/4', overflow: 'hidden', background: '#ede5da', position: 'relative', cursor: 'pointer' }} onClick={() => router.push(`/product/${item.id}`)}>
+                  <div
+                    key={item.cartId}
+                    className="cart-item-grid"
+                    style={{ display: 'grid', gridTemplateColumns: '120px 1fr auto', gap: 24, paddingBottom: 28, marginBottom: 28, borderBottom: idx < items.length - 1 ? '1px solid rgba(184,131,111,0.12)' : 'none', alignItems: 'start' }}
+                  >
+                    <div
+                      style={{ aspectRatio: '3/4', overflow: 'hidden', background: '#ede5da', position: 'relative', cursor: 'pointer' }}
+                      onClick={() => router.push(`/product/${item.id}`)}
+                    >
                       <Image src={item.img} alt={item.name} fill style={{ objectFit: 'cover' }} unoptimized />
                     </div>
                     <div>
@@ -59,7 +70,7 @@ export default function CartPage() {
               </div>
 
               {/* Summary */}
-              <div style={{ background: '#f5efe8', padding: '32px', border: '1px solid rgba(184,131,111,0.1)', position: 'sticky', top: 100 }}>
+              <div className="cart-summary-panel" style={{ background: '#f5efe8', padding: '32px', border: '1px solid rgba(184,131,111,0.1)', position: 'sticky', top: 100 }}>
                 <div style={{ fontFamily: "'Jost'", fontSize: 11, letterSpacing: '0.25em', color: '#c9a090', textTransform: 'uppercase', marginBottom: 24 }}>Récapitulatif</div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 12 }}>
                   <span style={{ fontFamily: "'Jost'", fontSize: 13, color: '#7a5a54', fontWeight: 300 }}>Sous-total</span>
@@ -86,6 +97,7 @@ export default function CartPage() {
             </div>
           )}
         </div>
+        <Footer />
       </div>
     </main>
   );
